@@ -1,25 +1,6 @@
 
 
-void drawBranch(float startX, float startY, int jointCount) {
-  float segmentLength = 20; // length of each branch segment
-  pushMatrix();
-  translate(startX, startY); // Move the origin to the starting point
-  
-  beginShape();
-  vertex(0, 0); // Start at (0, 0) since we translated the origin
-  float x = 0;
-  float y = 0;
-  noFill();
-  randomSeed(jointCount);
-  for (int i = 0; i < jointCount; i++) {
-    x += random(-segmentLength, +segmentLength);
-    y += segmentLength; // You can control y's direction to make it more realistic
-    vertex(x, y); // Draw the next point
-  }
-  
-  endShape();
-  popMatrix();
-}
+
 
 void drawLeaf(float x, float y, float rotation, float size, String leafType) {
  if(leafType == "alder") {
@@ -133,7 +114,7 @@ void drawLeaf(float x, float y, float rotation, float size, String leafType) {
 }
 
 void drawBush(int x, int y, int bushRadius, int leafCount) {
-  randomSeed(leafCount*bushRadius);
+  //randomSeed(leafCount*bushRadius);
   float rotation = 0;
   float rotationAmount = 360/map(leafCount,1,500, 1, 360);
   String[] leafTypes = {"ash", "beech", "birch", "alder", "chestnut", "sycamore"};
