@@ -15,7 +15,7 @@ void draw() {
   drawBush(122, 474, 35, int(random(70)));
   drawBush(265, 400, 25, int(random(70)));
   drawBush(118, 372, 39, int(random(70)));
-  drawBush(118, 372, 39, int(random(70)));
+  drawBush(125, 259, 39, int(random(70)));
   drawBush(254, 275, 38, int(random(70)));
   drawBush(251, 275, 38, int(random(70)));
   drawBush(258, 150, 38, int(random(70)));
