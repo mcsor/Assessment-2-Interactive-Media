@@ -1,6 +1,5 @@
 
 ArrayList<Leaf> leaves = new ArrayList<Leaf>();
-PImage leafImage;
 
 Leaf_Images leafType;
 String[] types = {"alder", "beech", "birch", "ash", "chestnut", "sycamore"};
@@ -35,8 +34,6 @@ Leaf myLeaf;
 void setupLeaf() {
   int numLeaves = 10;
   size(400, 400);
-  
-  //leafImage = loadImage("C:/Users/itail/OneDrive - UTS/Desktop/Interactive Media Coding Tasks/Assessment 2/Leaf_Movement/leaf_image.png");
   
   leafType = new Leaf_Images();
   
