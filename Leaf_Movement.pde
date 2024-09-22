@@ -1,7 +1,7 @@
 
 ArrayList<Leaf> leaves = new ArrayList<Leaf>();
 
-Leaf_Images leafType;
+//Leaf_Images leafType;
 String[] types = {"alder", "beech", "birch", "ash", "chestnut", "sycamore"};
 
 
@@ -33,9 +33,8 @@ Leaf myLeaf;
 
 void setupLeaf() {
   int numLeaves = 10;
-  size(400, 400);
   
-  leafType = new Leaf_Images();
+  //leafType = new Leaf_Images();
   
   for (int i = 0; i < numLeaves; i++) {
     // create leaves with parameters (x-pos, y-pos, swayAmount, fallSpeed, size)
@@ -66,7 +65,7 @@ void applyFalling(Leaf leaf) {
   noStroke();
   
   //draw leaf with parameters (x, y, rotation, size, type of leaf)
-  leafType.drawLeaf(leaf.x, leaf.y, leaf.rotation + 15*sin(leaf.angle), 2, leaf.type);
+  drawLeaf(leaf.x, leaf.y, leaf.rotation + 15*sin(leaf.angle), 2, leaf.type);
   // Update the angle for swaying motion
   leaf.angle += 0.03;  
 }
