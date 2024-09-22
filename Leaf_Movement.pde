@@ -2,6 +2,10 @@ int numLeaves = 10;
 ArrayList<Leaf> leaves = new ArrayList<Leaf>();
 PImage leafImage;
 
+Leaf_Images leafType;
+String[] types = {"alder", "beech", "birch", "ash", "chestnut", "sycamore"};
+
+
 // Define the Leaf class
 class Leaf {
   float x, y;         // Position of the leaf
@@ -10,6 +14,8 @@ class Leaf {
   float fallSpeed;    // Vertical falling speed
   float size;         // Size of the leaf
   float startingX;    // Point to sway from
+  String type;        //Type of leaf based on the Leaf Images class
+  float rotation;     //Rotation of the leaf
 
   Leaf(float x, float y, float swayAmount, float fallSpeed, float size) {
     this.x = x;
@@ -19,6 +25,8 @@ class Leaf {
     this.swayAmount = swayAmount;
     this.fallSpeed = fallSpeed;
     this.size = size;
+    this.type = types[int(random(0,types.length-1))];
+    this.rotation = random(0,180);
   }
 }
 
@@ -27,12 +35,13 @@ Leaf myLeaf;
 void setup() {
   size(400, 400);
   
-  //leafImage = loadImage("Name of Leaf Image File");
+  leafImage = loadImage("C:/Users/itail/OneDrive - UTS/Desktop/Interactive Media Coding Tasks/Assessment 2/Leaf_Movement/leaf_image.png");
   
+  leafType = new Leaf_Images();
   
   for (int i = 0; i < numLeaves; i++) {
     // create leaves with parameters (x-pos, y-pos, swayAmount, fallSpeed, size)
-    leaves.add(new Leaf(random(0, width), random(0, height/8), random(50), random(1.5,2), random(15,20)));
+    leaves.add(new Leaf(random(0, width), random(0, height/8), 20, random(1.5,2), 100));
   }
 }
 
@@ -57,9 +66,9 @@ void applyFalling(Leaf leaf) {
   // Draw the leaf (circle placeholder)
   fill(0, 250, 155);
   noStroke();
-  ellipse(leaf.x, leaf.y, leaf.size, leaf.size);
-  //image(leafImage, leaf.x, leaf.y, leaf.size, leaf.size);
   
+  //draw leaf with parameters (x, y, rotation, size, type of leaf)
+  leafType.drawLeaf(leaf.x, leaf.y, leaf.rotation + 15*sin(leaf.angle), 2, leaf.type);
   // Update the angle for swaying motion
   leaf.angle += 0.03;  
 }
