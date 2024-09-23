@@ -1,8 +1,15 @@
+// import libraries
+import controlP5.*;
+
+// global variables
 PImage img;
+int levelNum = 0;
+ControlP5 cp5;
+DropdownList levels;
 
 void setup() {
-  frameRate(30);
-   size(700, 700);
+  frameRate(2);
+  size(700, 700);
   img = loadImage("tree.png", "png");
   img.resize(0, 700);
   image(img, 0, 0);
@@ -24,7 +31,7 @@ void setup() {
   table09_29In = loadTable("https://eif-research.feit.uts.edu.au/api/csv/?rFromDate=2019-02-04T00%3A00&rToDate=2019-02-10T23%3A59%3A59&rFamily=people&rSensor=+PC09.29+%28In%29", "csv");
   table09_29Out = loadTable("https://eif-research.feit.uts.edu.au/api/csv/?rFromDate=2019-02-04T00%3A00&rToDate=2019-02-10T23%3A59%3A59&rFamily=people&rSensor=+PC09.29+%28Out%29", "csv");
 
-  //level 9 data (4. of febuary 2019 to 10. of february)
+  //level 11 data (4. of febuary 2019 to 10. of february)
   table11_31In = loadTable("https://eif-research.feit.uts.edu.au/api/csv/?rFromDate=2019-02-04T00%3A00&rToDate=2019-02-10T23%3A59%3A59&rFamily=people&rSensor=+PC11.31+%28In%29", "csv");
   table11_31Out = loadTable("https://eif-research.feit.uts.edu.au/api/csv/?rFromDate=2019-02-04T00%3A00&rToDate=2019-02-10T23%3A59%3A59&rFamily=people&rSensor=+PC11.31+%28Out%29", "csv");
   table11_32In = loadTable("https://eif-research.feit.uts.edu.au/api/csv/?rFromDate=2019-02-04T00%3A00&rToDate=2019-02-10T23%3A59%3A59&rFamily=people&rSensor=+PC11.32+%28In%29", "csv");
@@ -34,6 +41,15 @@ void setup() {
 
   println(table01_11In.getRowCount() == table09_26In.getRowCount());
   println(table09_26In.getRowCount() == table11_33In.getRowCount());
+  
+  cp5 = new ControlP5(this);
+  
+  // create dropdown list for floor levels
+  levels = cp5.addDropdownList("levels")
+    .setPosition(500, 300)
+    ;
+    
+  customizeDropdown(levels);
 }
 
 
@@ -42,18 +58,28 @@ void draw() {
   textSize(30);
   fill(0);
   image(img, 0, 0);
-  drawBush(111, 619, 37, level1Counter, "chestnut");
+  //*drawBush(111, 619, 37, level1Counter);
   //drawBush(292, 556, 22, int(random(70)));
   //drawBush(234, 499, 10, int(random(70)));
   //drawBush(122, 474, 35, int(random(70)));
   //drawBush(265, 400, 25, int(random(70)));
-  drawBush(118, 372, 39, level9Counter, "chestnut");
+  //*drawBush(118, 372, 39, level9Counter);
   //drawBush(125, 259, 39, int(random(70)));
   //drawBush(254, 275, 38, int(random(70)));
   //drawBush(251, 275, 38, int(random(70)));
   //drawBush(258, 150, 38, int(random(70)));
   //drawBush(251, 275, 38, int(random(70)));
-  drawBush(188, 71, 38, level11Counter, "chestnut");
+  //*drawBush(188, 71, 38, level11Counter);
+  //*delay(200);
+  
+  // check which floor level to show
+  if (levelNum == 1) {
+    drawBush(111, 619, 37, level1Counter);
+  } else if (levelNum == 9) {
+    drawBush(118, 372, 39, level9Counter);
+  } else if (levelNum == 11) {
+    drawBush(188, 71, 38, level11Counter);
+  }
   delay(200);
   
   //drawLeaf(200, 200, 120, 10,  "beech");
