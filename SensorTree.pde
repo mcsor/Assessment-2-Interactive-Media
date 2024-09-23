@@ -74,11 +74,11 @@ void draw() {
   
   // check which floor level to show
   if (levelNum == 1) {
-    drawBush(111, 619, 37, level1Counter);
+    drawBush(111, 619, 37, level1Counter, "birch");
   } else if (levelNum == 9) {
-    drawBush(118, 372, 39, level9Counter);
+    drawBush(118, 372, 39, level9Counter, "birch");
   } else if (levelNum == 11) {
-    drawBush(188, 71, 38, level11Counter);
+    drawBush(188, 71, 38, level11Counter, "birch");
   }
   delay(200);
   
