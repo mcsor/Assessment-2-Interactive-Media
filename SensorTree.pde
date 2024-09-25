@@ -6,6 +6,8 @@ PImage img;
 int levelNum = 0;
 ControlP5 cp5;
 DropdownList levels;
+DropdownList startDateChooser;
+DropdownList endDateChooser;
 
 void setup() {
   frameRate(30);
@@ -25,6 +27,15 @@ void setup() {
     .setPosition(500, 300)
     ;
     
+  startDateChooser = cp5.addDropdownList("fromDate")
+    .setPosition(500, 400)
+    ;
+    
+  endDateChooser = cp5.addDropdownList("toDate")
+    .setPosition(500, 500)
+    ;
+    
+  dateChooser();  
   customizeDropdown(levels);
 }
 
