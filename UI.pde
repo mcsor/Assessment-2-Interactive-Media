@@ -18,6 +18,7 @@ void customizeDropdown(DropdownList ddl) {
   ddl.addItem("Level 9", 1);
   // value 2 = level 11
   ddl.addItem("Level 11", 2);
+  ddl.addItem("FullTree", 3);
   
   //ddl.scroll(0);
   ddl.setColorBackground(color(60));
@@ -46,6 +47,9 @@ void controlEvent(ControlEvent theEvent) {
     } else if (level == 2.0) {
       println("Level 11");
       levelNum = 11;
+    } else if (level == 3.0) {
+      println("Full Tree");
+      levelNum = -99;
     }
     
     println("levelNum = " + levelNum);
