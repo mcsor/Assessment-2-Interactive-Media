@@ -109,12 +109,8 @@ void draw() {
     time = table01_11In.getString(i, 0);
   }
   i++;
-  //text("Time: " +  time, 350, 50);
-  //text("People on floor 1: " + level1Counter, 350, 100);
-  //text("People on floor 9: " + level9Counter, 350, 150);
-  //text("People on floor 11: " + level11Counter, 350, 200);
-    text("TX: " + tx, 400, 200);
-    text("TY: " + ty, 400, 250);
-    text("TW: " + tw, 400, 300);
-    text("TH: " + th, 400, 350);
+  text("Time: " +  time, 350, 50);
+  text("People on floor 1: " + level1Counter, 350, 100);
+  text("People on floor 9: " + level9Counter, 350, 150);
+  text("People on floor 11: " + level11Counter, 350, 200);
 }
