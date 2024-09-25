@@ -9,12 +9,37 @@ DropdownList levels;
 
 void setup() {
   frameRate(30);
-  size(635, 1141, P2D);
-  img = loadImage("tree.png", "png");
+  size(635, 700, P2D);
+  img = loadImage("Tree-Wide.png", "png");
+  img.resize(635, 700);
   image(img, 0, 0);
   initZoom();
-  
-  loadData();
+  //Level 1 data (4. of febuary 2019 to 10. of february)
+  table01_11In = loadTable("https://eif-research.feit.uts.edu.au/api/csv/?rFromDate=2019-02-04T00%3A00&rToDate=2019-02-10T23%3A59%3A59&rFamily=people&rSensor=+PC01.11+%28In%29", "csv");
+  table01_11Out = loadTable("https://eif-research.feit.uts.edu.au/api/csv/?rFromDate=2019-02-04T00%3A00&rToDate=2019-02-10T23%3A59%3A59&rFamily=people&rSensor=+PC01.11+%28Out%29", "csv");
+  table01_12In = loadTable("https://eif-research.feit.uts.edu.au/api/csv/?rFromDate=2019-02-04T00%3A00&rToDate=2019-02-10T23%3A59%3A59&rFamily=people&rSensor=+PC01.12+%28In%29", "csv");
+  table01_12Out = loadTable("https://eif-research.feit.uts.edu.au/api/csv/?rFromDate=2019-02-04T00%3A00&rToDate=2019-02-10T23%3A59%3A59&rFamily=people&rSensor=+PC01.12+%28Out%29", "csv");
+  table01_13In = loadTable("https://eif-research.feit.uts.edu.au/api/csv/?rFromDate=2019-02-04T00%3A00&rToDate=2019-02-10T23%3A59%3A59&rFamily=people&rSensor=+PC01.13+%28In%29", "csv");
+  table01_13Out = loadTable("https://eif-research.feit.uts.edu.au/api/csv/?rFromDate=2019-02-04T00%3A00&rToDate=2019-02-10T23%3A59%3A59&rFamily=people&rSensor=+PC01.13+%28Out%29", "csv");
+
+  //level 9 data (4. of febuary 2019 to 10. of february)
+  table09_26In = loadTable("https://eif-research.feit.uts.edu.au/api/csv/?rFromDate=2019-02-04T00%3A00&rToDate=2019-02-10T23%3A59%3A59&rFamily=people&rSensor=+PC09.26+%28In%29", "csv");
+  table09_26Out = loadTable("https://eif-research.feit.uts.edu.au/api/csv/?rFromDate=2019-02-04T00%3A00&rToDate=2019-02-10T23%3A59%3A59&rFamily=people&rSensor=+PC09.26+%28Out%29", "csv");
+  table09_27In = loadTable("https://eif-research.feit.uts.edu.au/api/csv/?rFromDate=2019-02-04T00%3A00&rToDate=2019-02-10T23%3A59%3A59&rFamily=people&rSensor=+PC09.27+%28In%29", "csv");
+  table09_27Out = loadTable("https://eif-research.feit.uts.edu.au/api/csv/?rFromDate=2019-02-04T00%3A00&rToDate=2019-02-10T23%3A59%3A59&rFamily=people&rSensor=+PC09.27+%28Out%29", "csv");
+  table09_28In = loadTable("https://eif-research.feit.uts.edu.au/api/csv/?rFromDate=2019-02-04T00%3A00&rToDate=2019-02-10T23%3A59%3A59&rFamily=people&rSensor=+PC09.28+%28In%29", "csv");
+  table09_28Out = loadTable("https://eif-research.feit.uts.edu.au/api/csv/?rFromDate=2019-02-04T00%3A00&rToDate=2019-02-10T23%3A59%3A59&rFamily=people&rSensor=+PC09.28+%28Out%29", "csv");
+  table09_29In = loadTable("https://eif-research.feit.uts.edu.au/api/csv/?rFromDate=2019-02-04T00%3A00&rToDate=2019-02-10T23%3A59%3A59&rFamily=people&rSensor=+PC09.29+%28In%29", "csv");
+  table09_29Out = loadTable("https://eif-research.feit.uts.edu.au/api/csv/?rFromDate=2019-02-04T00%3A00&rToDate=2019-02-10T23%3A59%3A59&rFamily=people&rSensor=+PC09.29+%28Out%29", "csv");
+
+  //level 11 data (4. of febuary 2019 to 10. of february)
+  table11_31In = loadTable("https://eif-research.feit.uts.edu.au/api/csv/?rFromDate=2019-02-04T00%3A00&rToDate=2019-02-10T23%3A59%3A59&rFamily=people&rSensor=+PC11.31+%28In%29", "csv");
+  table11_31Out = loadTable("https://eif-research.feit.uts.edu.au/api/csv/?rFromDate=2019-02-04T00%3A00&rToDate=2019-02-10T23%3A59%3A59&rFamily=people&rSensor=+PC11.31+%28Out%29", "csv");
+  table11_32In = loadTable("https://eif-research.feit.uts.edu.au/api/csv/?rFromDate=2019-02-04T00%3A00&rToDate=2019-02-10T23%3A59%3A59&rFamily=people&rSensor=+PC11.32+%28In%29", "csv");
+  table11_32Out = loadTable("https://eif-research.feit.uts.edu.au/api/csv/?rFromDate=2019-02-04T00%3A00&rToDate=2019-02-10T23%3A59%3A59&rFamily=people&rSensor=+PC11.32+%28Out%29", "csv");
+  table11_33In = loadTable("https://eif-research.feit.uts.edu.au/api/csv/?rFromDate=2019-02-04T00%3A00&rToDate=2019-02-10T23%3A59%3A59&rFamily=people&rSensor=+PC11.33+%28In%29", "csv");
+  table11_33Out = loadTable("https://eif-research.feit.uts.edu.au/api/csv/?rFromDate=2019-02-04T00%3A00&rToDate=2019-02-10T23%3A59%3A59&rFamily=people&rSensor=+PC11.33+%28Out%29", "csv");
+
   println(table01_11In.getRowCount() == table09_26In.getRowCount());
   println(table09_26In.getRowCount() == table11_33In.getRowCount());
   
@@ -22,7 +47,7 @@ void setup() {
   
   // create dropdown list for floor levels
   levels = cp5.addDropdownList("levels")
-    .setPosition(500, 300)
+    .setPosition(500, 400)
     ;
     
   customizeDropdown(levels);
@@ -35,9 +60,9 @@ void draw() {
   //textSize(30);
   fill(0);
   //image(img, 0, 0);
- drawBush(mapToScreenX(180), mapToScreenY(1017), 37, level1Counter, "beech", scale);
-  drawBush(mapToScreenX(414), mapToScreenY(676), 39, level9Counter, "beech", scale);
-  drawBush(mapToScreenX(291), mapToScreenY(145), 38, level11Counter, "beech", scale);
+ drawBush(mapToScreenX(190), mapToScreenY(417), 45, level1Counter, "beech", scale);
+  drawBush(mapToScreenX(450), mapToScreenY(320), 45, level9Counter, "beech", scale);
+  drawBush(mapToScreenX(250), mapToScreenY(120), 45, level11Counter, "beech", scale);
   
   // check which floor level to show
   if (levelNum == 1) {

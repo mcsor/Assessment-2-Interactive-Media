@@ -1,3 +1,4 @@
+
 void drawLeaf(float x, float y, float rotation, float size, String leafType) {
  if(leafType == "alder") {
    float leafWidth = 14*size;
