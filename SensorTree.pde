@@ -11,8 +11,9 @@ DropdownList endDateChooser;
 
 void setup() {
   frameRate(30);
-  size(635, 1141, P2D);
+  size(1000, 1000, P2D);
   img = loadImage("tree.png", "png");
+  //img.resize(1000,0);
   image(img, 0, 0);
   initZoom();
   
@@ -46,28 +47,28 @@ void draw() {
   //textSize(30);
   fill(0);
   //image(img, 0, 0);
- drawBush(mapToScreenX(180), mapToScreenY(1017), 37, level1Counter, "beech", scale);
-  drawBush(mapToScreenX(414), mapToScreenY(676), 39, level9Counter, "beech", scale);
-  drawBush(mapToScreenX(291), mapToScreenY(145), 38, level11Counter, "beech", scale);
+ drawBush(mapToScreenX(1151), mapToScreenY(2160), 235, level1Counter, "beech", scale);
+  drawBush(mapToScreenX(2505), mapToScreenY(1534), 377, level9Counter, "beech", scale);
+  drawBush(mapToScreenX(1358), mapToScreenY(667), 261, level11Counter, "beech", scale);
   
   // check which floor level to show
   if (levelNum == 1) {
-    tx = 121;
-    ty = 888;
+    tx = 683;
+    ty = 1729;
     newScale = constrain(scale *  1.1 , minScale, maxScale);
     tx -= (mouseX/newScale - mouseX/scale);
     ty -= (mouseY/newScale - mouseY/scale);
     scale = newScale;
   } else if (levelNum == 9) {
-    tx = 353;
-    ty = 551;
+    tx = 2067;
+    ty = 1147;
     newScale = constrain(scale *  1.1 , minScale, maxScale);
     tx -= (mouseX/newScale - mouseX/scale);
     ty -= (mouseY/newScale - mouseY/scale);
     scale = newScale;
   } else if (levelNum == 11) {
-    tx = 233;
-    ty = 11;
+    tx = 994;
+    ty = 227;
     newScale = constrain(scale *  1.1 , minScale, maxScale);
     tx -= (mouseX/newScale - mouseX/scale);
     ty -= (mouseY/newScale - mouseY/scale);
