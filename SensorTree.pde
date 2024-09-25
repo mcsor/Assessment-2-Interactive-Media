@@ -27,11 +27,11 @@ void setup() {
     .setPosition(500, 300)
     ;
     
-  startDateChooser = cp5.addDropdownList("fromDate")
+  startDateChooser = cp5.addDropdownList(fromDate)
     .setPosition(500, 400)
     ;
     
-  endDateChooser = cp5.addDropdownList("toDate")
+  endDateChooser = cp5.addDropdownList(toDate)
     .setPosition(500, 500)
     ;
     

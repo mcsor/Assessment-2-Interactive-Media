@@ -116,4 +116,13 @@ void dateChooser()
   //  }
   //}
   //);
+  
+  cp5.addButton("reload")
+    .setPosition(500, 600)
+    .onPress(new CallbackListener() {
+    public void controlEvent(CallbackEvent event) {
+      loadData();   //re-loads the tables
+    }
+  }
+  );
 }

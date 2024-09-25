@@ -68,6 +68,9 @@ void dumpTables() //Unloads all tables
 
 void loadData()
 {
+  println(toDate);
+  println(fromDate);
+  
   if (isLoaded == true)
   {
     dumpTables();
