@@ -111,12 +111,19 @@ void drawLeaf(float x, float y, float rotation, float size, String leafType) {
 void drawBush(int x, int y, int bushRadius, int leafCount) {
   //randomSeed(leafCount*bushRadius);
   float rotation = 0;
+<<<<<<< Updated upstream
   float rotationAmount = 360/map(leafCount, 1, 500, 1, 360);
   String[] leafTypes = {"ash", "beech", "birch", "alder", "chestnut", "sycamore"};
   for (int i = 0; i < leafCount; i++) {
     String leafType = leafTypes[int(random(0, leafTypes.length))];
     fill(81, random(50, 255), random(84, 88));
     drawLeaf(x+random(-bushRadius, bushRadius), y+random(-bushRadius, bushRadius), rotation, 1.5, leafType);
+=======
+  float rotationAmount = 360/map(leafCount,1,500, 1, 360);
+  for(int i = 0; i < leafCount; i++) { 
+    fill(81, 100, 80);
+    drawLeaf(x, y+random(-bushRadius,bushRadius), rotation, 1.5, leafType);
+>>>>>>> Stashed changes
     rotation += rotationAmount;
   }
 }
