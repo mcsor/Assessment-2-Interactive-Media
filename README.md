@@ -12,7 +12,7 @@ Filter Dates
 Zoom
 
 ## Installation
-1. [Install Processing] (https://processing.org/download)
+1. [Install Processing](https://processing.org/download)
 2. Download the project zip file.
 3. Unzip the file.
 4. Open and run the project in Processing on your local computer.
