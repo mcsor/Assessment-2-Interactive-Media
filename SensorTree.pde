@@ -13,7 +13,6 @@ void setup() {
   frameRate(30);
   size(1000, 1000, P2D);
   img = loadImage("tree.png", "png");
-  //img.resize(1000,0);
   image(img, 0, 0);
   initZoom();
   
@@ -42,15 +41,18 @@ void setup() {
 
 
 void draw() {
+  fill(0);
   drawZoom();
   //background(250);
   //textSize(30);
   fill(0);
   //image(img, 0, 0);
- drawBush(mapToScreenX(1151), mapToScreenY(2160), 235, level1Counter, "beech", scale);
-  drawBush(mapToScreenX(2505), mapToScreenY(1534), 377, level9Counter, "beech", scale);
-  drawBush(mapToScreenX(1358), mapToScreenY(667), 261, level11Counter, "beech", scale);
-  
+ //drawBush(mapToScreenX(1151), mapToScreenY(2160), 235, level1Counter, "beech", scale);
+ // drawBush(mapToScreenX(2505), mapToScreenY(1534), 377, level9Counter, "beech", scale);
+ // drawBush(mapToScreenX(1358), mapToScreenY(667), 261, level11Counter, "beech", scale);
+  prevLevel1Counter = level1Counter;
+  prevLevel9Counter = level9Counter;
+  prevLevel11Counter = level11Counter;
   // check which floor level to show
   if (levelNum == 1) {
     tx = 683;
@@ -96,7 +98,10 @@ void draw() {
     }
     time = table01_11In.getString(i, 0);
   }
+  createLeaf();
+  drawLeaf();
   i++;
+
   text("Time: " +  time, 350, 50);
   text("People on floor 1: " + level1Counter, 350, 100);
   text("People on floor 9: " + level9Counter, 350, 150);

@@ -22,8 +22,11 @@ Table table11_33In;
 Table table11_33Out;
 
 int level1Counter = 0;
+int prevLevel1Counter;
 int level9Counter = 0;
+int prevLevel9Counter;
 int level11Counter = 0;
+int prevLevel11Counter;
 int i = 0;
 String time;
 
