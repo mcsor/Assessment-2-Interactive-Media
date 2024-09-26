@@ -41,7 +41,7 @@ void setup() {
 
 
 void draw() {
-  fill(0);
+
   drawZoom();
   //background(250);
   //textSize(30);
@@ -55,8 +55,8 @@ void draw() {
   prevLevel11Counter = level11Counter;
   // check which floor level to show
   if (levelNum == 1) {
-    tx = 683;
-    ty = 1729;
+    tx = width/2.84;
+    ty = height/1.64;
     newScale = constrain(scale *  1.1 , minScale, maxScale);
     tx -= (mouseX/newScale - mouseX/scale);
     ty -= (mouseY/newScale - mouseY/scale);
@@ -101,6 +101,9 @@ void draw() {
   createLeaf();
   drawLeaf();
   i++;
+  fill(0);
+  text("divisorX " + width/( mouseX + 0.01), 10, 10);
+  text("divisorY " + width/( mouseY + 0.01), 10, 50);
 
   text("Time: " +  time, 350, 50);
   text("People on floor 1: " + level1Counter, 350, 100);
