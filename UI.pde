@@ -5,6 +5,31 @@ import java.util.Date;
 
 // UI functions
 
+void setupUI() {
+  cp5 = new ControlP5(this);
+  
+  // create dropdown list for floor levels
+  levels = cp5.addDropdownList("levels")
+    .setPosition(500, 300)
+    .setLabel("Level Selection")
+    ;
+    
+  startDateChooser = cp5.addDropdownList("fromDate")
+    .setPosition(500, 400)
+    .setLabel("Start Date")
+    ;
+    
+  endDateChooser = cp5.addDropdownList("toDate")
+    .setPosition(500, 500)
+    .setLabel("End Date")
+    ;
+    
+  dateChooser();  
+  customizeDropdown(levels);
+
+}
+
+
 void customizeDropdown(DropdownList ddl) {
   // a convenience function to customize a DropdownList
   ddl.setBackgroundColor(color(190));
@@ -37,24 +62,35 @@ void controlEvent(ControlEvent theEvent) {
     println("event from group : "+theEvent.getGroup().getValue()+" from "+theEvent.getGroup());
   } else if (theEvent.isController()) {
     float level = theEvent.getController().getValue();
-    if (level == 0.0) {
-      println("Level 1");
-      levelNum = 1;
-    } else if (level == 1.0) {
-      println("Level 9");
-      levelNum = 9;
-    } else if (level == 2.0) {
-      println("Level 11");
-      levelNum = 11;
-    } else if (level == 3.0) {
-      println("Full Tree");
-      levelNum = -99;
+
+
+    switch (int(level)) {
+      case 0:
+        println("Level 1");
+        levelNum = 1;
+        break;
+    
+      case 1:
+        println("Level 9");
+        levelNum = 9;
+        break;
+    
+      case 2:
+        println("Level 11");
+        levelNum = 11;
+        break;
+    
+      case 3:
+        println("Full Tree");
+        levelNum = -99;
+        break;
     }
-
-    println("levelNum = " + levelNum);
-
-    println("event from controller : "+theEvent.getController().getValue()+" from "+theEvent.getController());
-  }
+        
+        println("levelNum = " + levelNum);
+    
+        println("event from controller : "+theEvent.getController().getValue()+" from "+theEvent.getController());
+        showFloor();
+   }
 }
 
 // split time string to get date and time of data

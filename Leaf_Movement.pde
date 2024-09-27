@@ -25,6 +25,8 @@ class Leaf {
   int green = 255;
   int blue = 100;
 
+  int opacity = 255;
+
   Leaf(float x, float y, float swayAmount, float fallSpeed, float size, String id) {
     this.x = x;
     this.startingX = x;
@@ -40,7 +42,7 @@ class Leaf {
     this.ID = id;
     this.isFalling = false;
     this.age = 0;
-    this.colour = color(this.red,this.green,this.blue);
+    this.colour = color(this.red,this.green,this.blue, this.opacity);
   }
 }
 
@@ -52,13 +54,22 @@ void drawLeaf() {
     Leaf leaf = leaves.get(i);
     if (leaf.isFalling) {
       falling(leaf);
+      shrinkLeaf(leaf);
     }
     removeLeaf(leaf);
     
     fill(leaf.colour);
-    drawLeaf(mapToScreenX(leaf.x), mapToScreenY(leaf.y), leaf.rotation + 20*sin(leaf.angle), leaf.size, "birch");
+
     leaf.age++;
     growLeaf(leaf);
+    
+    if (leaf.ID == "falling") {
+     drawLeaf(mapToScreenX(leaf.x), mapToScreenY(leaf.y), leaf.rotation + 20*sin(leaf.angle), leaf.size, "birch");
+    }
+    else {
+      drawLeaf(mapToScreenX(leaf.x), mapToScreenY(leaf.y), leaf.rotation + 20*sin(leaf.angle), leaf.size, "birch");
+    }
+    
   }
   
 }
@@ -83,7 +94,10 @@ void falling(Leaf leaf) {
   leaf.blue -=5;
   constrain(leaf.green, 30, 255);
   leaf.green -=3;
-  leaf.colour = color(leaf.red, leaf.green, leaf.blue);
+  constrain(leaf.opacity, 0, 255);
+  
+  leaf.colour = color(leaf.red, leaf.green, leaf.blue, leaf.opacity);
+
   //fill(leaf.colour);
   // Update the angle for swaying motion
   leaf.angle += 0.2;
@@ -100,7 +114,8 @@ void createLeaf() {
       
       for (int i = prevLevel1Counter; i < level1Counter; i++) {
         // create leaves with parameters (x-pos, y-pos, swayAmount, fallSpeed, size, ID)
-        leaves.add(new Leaf(random(width/4.9,width/2.717), random(height/2.1,height/1.41), random(10,20), random(4.0,5), random(1.2,1.8), "F1"));
+        //leaves.add(new Leaf(random(width/4.9,width/2.717), random(height/2.1,height/1.41), random(10,20), random(4.0,5), random(1.2,1.8), "F1"));
+        leaves.add(new Leaf(random(191,360), random(476,726), random(10,20), random(4.0,5), random(1.2,1.8), "F1"));
       }
   }
     if (level9Counter > prevLevel9Counter) {
@@ -174,6 +189,7 @@ void applyFalling() {
 
 }
 
+//growing the leaf when it is first created
 void growLeaf(Leaf leaf) {
 
   if (leaf.age < 5) {
@@ -184,4 +200,14 @@ void growLeaf(Leaf leaf) {
    leaf.size = leaf.maxSize;
   }
    
+}
+
+// Function to gradually shrink the leaf size when it is falling
+void shrinkLeaf(Leaf leaf) {
+  // Decrease the size gradually while the leaf is falling
+  if (leaf.size > 0.1) {
+    leaf.size -= 0.15; // Adjust the decrement value to control shrink rate
+  } else {
+    leaf.size = 0.1;  // Minimum size to prevent negative values
+  }
 }
