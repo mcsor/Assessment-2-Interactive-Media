@@ -1,4 +1,3 @@
-
 // import libraries
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
@@ -31,15 +30,16 @@ void setupUI() {
     
   button = cp5.addButton("reset")
     .setPosition(800,350)
-    .onPress(new CallbackListener() {
-    public void controlEvent(CallbackEvent event) {
-      noLoop();
-      loadData();   //re-loads the tables
-      i = 0;
-      loop();
-    }
-  }
-  );
+  //.onPress(new CallbackListener() {
+  //  public void controlEvent(CallbackEvent event) {
+  //    noLoop();
+  //    loadData();   //re-loads the tables
+  //    i = 0;
+  //    loop();
+  //  }
+  //}
+  //)
+  ;
   
     button = cp5.addButton("Pause")
     .setPosition(100,350)
