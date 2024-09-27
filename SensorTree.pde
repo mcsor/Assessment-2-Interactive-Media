@@ -10,6 +10,9 @@ ControlP5 cp5;
 DropdownList levels;
 DropdownList startDateChooser;
 DropdownList endDateChooser;
+boolean level1 = false;
+boolean level9 = false;
+boolean level11 = false;
 
 void setup() {
   frameRate(60);
@@ -72,9 +75,39 @@ void draw() {
   //text("MouseY " + mouseY, 10, 50);
   
   text("Time: " +  time, 10, 50);
-  text("People on floor 1: " + level1Counter, 10, 100);
-  text("People on floor 9: " + level9Counter, 10, 150);
-  text("People on floor 11: " + level11Counter, 10, 200);
+  
+  switch(levelNum){
+    case 1:
+      level1 = true;
+      level9 = false;
+      level11 = false;
+      break;
+    case 9:
+      level9 = true;
+      level1 = false;
+      level11 = false;
+      break;
+    case 11:
+      level11 = true;
+      level9 = false;
+      level1 = false;
+      break;
+    case -99:
+      level1 = false;
+      level9 = false;
+      level11 = false;
+      break;
+    
+  }
+  if(level1 == true){
+    text("People on floor 1: " + level1Counter, 10, 100);
+  }
+  if(level9 == true){
+    text("People on floor 9: " + level9Counter, 120, 100);
+  }
+  if(level11 == true){
+    text("People on floor 11: " + level11Counter, 10, 100);
+  }
   
   delay(100);
   
