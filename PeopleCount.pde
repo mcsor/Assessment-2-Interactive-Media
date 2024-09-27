@@ -35,7 +35,6 @@ String fromDate = "2019-02-04";
 String toDate = "2019-02-10";
 
 
-
 int peopleOnFloor(Table in, Table out) {
   int counter = 0;
   if (i < in.getRowCount()) {
@@ -45,6 +44,7 @@ int peopleOnFloor(Table in, Table out) {
   }
   return counter;
 }
+
 
 void dumpTables() //Unloads all tables
 {

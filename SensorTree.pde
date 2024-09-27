@@ -17,9 +17,11 @@ void setup() {
   size(1000, 1000, P2D);
   img = loadImage("tree.png", "png");
   image(img, 0, 0);
+
   sound1 = new SoundFile(this, "soundeffect.mp3");
   initZoom();
   setupUI();
+
 
   
   loadData(); //<>//
@@ -27,10 +29,13 @@ void setup() {
   
     sound1.play();
 
-}
 
+}
+  println(table01_11In.getRowCount() == table09_26In.getRowCount());
+  println(table09_26In.getRowCount() == table11_33In.getRowCount());
 
 void draw() {
+
   cp5.draw();
   drawZoom();
   
@@ -66,6 +71,7 @@ void draw() {
   }
   createLeaf(); //<>//
   i++;
+
   }
   drawLeaf();
   fill(0);
