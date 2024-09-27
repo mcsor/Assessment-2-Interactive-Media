@@ -3,11 +3,8 @@ import java.text.SimpleDateFormat;
 import java.text.ParseException;
 import java.util.Date;
 
-DropdownList levels;
-DropdownList startDateChooser;
-DropdownList endDateChooser;
-Button button;
 // UI functions
+
 
 void setupUI() {
   cp5 = new ControlP5(this);
@@ -72,7 +69,6 @@ void setupUI() {
   customizeDropdown(levels);
 }
 
-
 void customizeDropdown(DropdownList ddl) {
   // a convenience function to customize a DropdownList
   ddl.setBackgroundColor(color(190));
@@ -86,7 +82,7 @@ void customizeDropdown(DropdownList ddl) {
   ddl.addItem("Level 9", 1);
   // value 2 = level 11
   ddl.addItem("Level 11", 2);
-  ddl.addItem("Full Tree", 3);
+  ddl.addItem("FullTree", 3);
 
   //ddl.scroll(0);
   ddl.setColorBackground(color(60));
@@ -103,30 +99,20 @@ void controlEvent(ControlEvent theEvent) {
   if (theEvent.isGroup()) {
     // check if the Event was triggered from a ControlGroup
     println("event from group : "+theEvent.getGroup().getValue()+" from "+theEvent.getGroup());
-  } else if (theEvent.isController() && theEvent.getController().getName().equals("levels")) {
+  } else if (theEvent.isController()) {
     float level = theEvent.getController().getValue();
-
-
-    switch (int(level)) {
-      case 0:
-        println("Level 1");
-        levelNum = 1;
-        break;
-    
-      case 1:
-        println("Level 9");
-        levelNum = 9;
-        break;
-    
-      case 2:
-        println("Level 11");
-        levelNum = 11;
-        break;
-    
-      case 3:
-        println("Full Tree");
-        levelNum = -99;
-        break;
+    if (level == 0.0) {
+      println("Level 1");
+      levelNum = 1;
+    } else if (level == 1.0) {
+      println("Level 9");
+      levelNum = 9;
+    } else if (level == 2.0) {
+      println("Level 11");
+      levelNum = 11;
+    } else if (level == 3.0) {
+      println("Full Tree");
+      levelNum = -99;
     }
         
         println("levelNum = " + levelNum);
@@ -134,41 +120,6 @@ void controlEvent(ControlEvent theEvent) {
         println("event from controller : "+theEvent.getController().getValue()+" from "+theEvent.getController());
         showFloor();
    }
-     if (theEvent.isFrom("fromDate")) {
-    float date = theEvent.getController().getValue();
-    switch (int(date))
-    {
-     case 0:
-     fromDate = "2019-02-04";
-     break;
-     case 1:
-     fromDate = "2019-02-05";
-     break;
-     case 2:
-     fromDate = "2019-02-06";
-     break;
-    }
-    println("Selected fromDate: " + fromDate);
-  }
-
-  // Handle the end date dropdown
-  if (theEvent.isFrom("toDate")) {
-    float date = theEvent.getController().getValue();
-    switch(int(date))
-    {
-     case 0:
-     toDate = "2019-02-10";
-     break;
-     case 1:
-     toDate = "2019-02-11";
-     break;
-     case 2:
-     toDate = "2019-02-12";
-     break;
-    }
-    
-    println("Selected toDate: " + toDate);
-  }
 }
 
 // split time string to get date and time of data
@@ -190,4 +141,44 @@ void findTime() {
 
   //println("date = " + newDate);
   println("time = " + time);
+}
+
+void dateChooser()
+{
+  // a convenience function to customize a DropdownList
+  startDateChooser.setPosition(500, 400);
+  startDateChooser.setBackgroundColor(color(190));
+  startDateChooser.setItemHeight(20);
+  startDateChooser.setBarHeight(15);
+  startDateChooser.getCaptionLabel().set("start date");
+  startDateChooser.addItem("2019-02-04", "2019-02-04");
+  startDateChooser.addItem("2019-02-03", "2019-02-03");
+  startDateChooser.addItem("2019-02-02", "2019-02-02");
+  startDateChooser.addItem("2019-02-01", "2019-02-01");
+  startDateChooser.setColorBackground(color(60));
+  startDateChooser.setColorActive(color(255, 128));
+  //startDateChooser.onPress(new CallbackListener() {
+  //  public void controlEvent(CallbackEvent event) {
+  //    loadData();   //re-loads the tables
+  //  }
+  //}
+  //);
+
+
+  endDateChooser.getCaptionLabel().set("end date");
+  endDateChooser.setBackgroundColor(color(190));
+  endDateChooser.setItemHeight(20);
+  endDateChooser.setBarHeight(15);
+  endDateChooser.addItem("2019-02-10", "2019-02-10");
+  endDateChooser.addItem("2019-02-9", "2019-02-9");
+  endDateChooser.addItem("2019-02-8", "2019-02-8");
+  endDateChooser.addItem("2019-02-7", "2019-02-7");
+  endDateChooser.setColorBackground(color(60));
+  endDateChooser.setColorActive(color(255, 128));
+  //endDateChooser.onPress(new CallbackListener() {
+  //  public void controlEvent(CallbackEvent event) {
+  //    loadData();   //re-loads the tables
+  //  }
+  //}
+  //);
 }
