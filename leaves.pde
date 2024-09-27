@@ -115,7 +115,7 @@ void drawBush(float x, float y, int bushRadius, int leafCount,  String leafType,
   float rotationAmount = 360/map(leafCount,1,500, 1, 360);
   for(int i = 1; i < leafCount; i++) { 
     fill(81, 100, 80);
-    drawLeaf(x+random(-bushRadius,bushRadius), y+random(-bushRadius,bushRadius), rotation, 1.5*scale, leafType);
+    drawLeaf(x+random(-bushRadius,bushRadius)*scale, y+random(-bushRadius,bushRadius)*scale, rotation, 10.0*scale, leafType);
     rotation += rotationAmount;
   }
 }

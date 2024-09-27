@@ -12,7 +12,7 @@ void initZoom() {
   
   //minumum scale is calculated to prevent texture wrapping
   minScale = max(xratio, yratio);
-  maxScale = 5;
+  maxScale = 1.10;
   
   //start zoomed out
   scale = minScale;
