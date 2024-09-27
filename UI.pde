@@ -3,6 +3,10 @@ import java.text.SimpleDateFormat;
 import java.text.ParseException;
 import java.util.Date;
 
+DropdownList levels;
+DropdownList startDateChooser;
+DropdownList endDateChooser;
+Button button;
 // UI functions
 
 void setupUI() {
@@ -10,22 +14,54 @@ void setupUI() {
   
   // create dropdown list for floor levels
   levels = cp5.addDropdownList("levels")
-    .setPosition(500, 300)
+    .setPosition(800, 50)
     .setLabel("Level Selection")
     ;
     
   startDateChooser = cp5.addDropdownList("fromDate")
-    .setPosition(500, 400)
+    .setPosition(800, 150)
     .setLabel("Start Date")
     ;
     
   endDateChooser = cp5.addDropdownList("toDate")
-    .setPosition(500, 500)
+    .setPosition(800, 250)
     .setLabel("End Date")
     ;
     
+  button = cp5.addButton("reset")
+    .setPosition(800,350)
+    .onPress(new CallbackListener() {
+    public void controlEvent(CallbackEvent event) {
+      noLoop();
+      loadData();   //re-loads the tables
+      i = 0;
+      loop();
+    }
+  }
+  );
+  
+    button = cp5.addButton("Pause")
+    .setPosition(100,350)
+    .onPress(new CallbackListener() {
+    public void controlEvent(CallbackEvent event) {
+      isPaused = true;
+    }
+  }
+  );
+  
+    button = cp5.addButton("Play")
+    .setPosition(150,350)
+    .onPress(new CallbackListener() {
+    public void controlEvent(CallbackEvent event) {
+      isPaused = false;
+    }
+  }
+  );
+    
   dateChooser();  
   customizeDropdown(levels);
+  
+  
 
 }
 
@@ -116,8 +152,6 @@ void findTime() {
 
 void dateChooser()
 {
-  // a convenience function to customize a DropdownList
-  startDateChooser.setPosition(500, 400);
   startDateChooser.setBackgroundColor(color(190));
   startDateChooser.setItemHeight(20);
   startDateChooser.setBarHeight(15);
@@ -128,12 +162,6 @@ void dateChooser()
   startDateChooser.addItem("2019-02-01", "2019-02-01");
   startDateChooser.setColorBackground(color(60));
   startDateChooser.setColorActive(color(255, 128));
-  //startDateChooser.onPress(new CallbackListener() {
-  //  public void controlEvent(CallbackEvent event) {
-  //    loadData();   //re-loads the tables
-  //  }
-  //}
-  //);
 
 
   endDateChooser.getCaptionLabel().set("end date");
@@ -141,15 +169,10 @@ void dateChooser()
   endDateChooser.setItemHeight(20);
   endDateChooser.setBarHeight(15);
   endDateChooser.addItem("2019-02-10", "2019-02-10");
-  endDateChooser.addItem("2019-02-9", "2019-02-9");
-  endDateChooser.addItem("2019-02-8", "2019-02-8");
-  endDateChooser.addItem("2019-02-7", "2019-02-7");
+  endDateChooser.addItem("2019-02-9", "2019-02-09");
+  endDateChooser.addItem("2019-02-8", "2019-02-08");
+  endDateChooser.addItem("2019-02-7", "2019-02-07");
   endDateChooser.setColorBackground(color(60));
   endDateChooser.setColorActive(color(255, 128));
-  //endDateChooser.onPress(new CallbackListener() {
-  //  public void controlEvent(CallbackEvent event) {
-  //    loadData();   //re-loads the tables
-  //  }
-  //}
-  //);
+  
 }
