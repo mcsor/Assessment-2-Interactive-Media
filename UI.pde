@@ -50,11 +50,12 @@ void controlEvent(ControlEvent theEvent) {
       println("Full Tree");
       levelNum = -99;
     }
-
-    println("levelNum = " + levelNum);
-
-    println("event from controller : "+theEvent.getController().getValue()+" from "+theEvent.getController());
-  }
+        
+        println("levelNum = " + levelNum);
+    
+        println("event from controller : "+theEvent.getController().getValue()+" from "+theEvent.getController());
+        showFloor();
+   }
 }
 
 // split time string to get date and time of data
@@ -116,13 +117,4 @@ void dateChooser()
   //  }
   //}
   //);
-  
-  cp5.addButton("reload")
-    .setPosition(500, 600)
-    .onPress(new CallbackListener() {
-    public void controlEvent(CallbackEvent event) {
-      loadData();   //re-loads the tables
-    }
-  }
-  );
 }
