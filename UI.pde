@@ -18,25 +18,34 @@ void setupUI() {
     .setLabel("Level Selection")
     ;
     
-  startDateChooser = cp5.addDropdownList("fromDate")
+  DropdownList startDateChooser = cp5.addDropdownList("fromDate")
     .setPosition(875, 125)
-    .setLabel("Start Date")
-    ;
-    
-  endDateChooser = cp5.addDropdownList("toDate")
+    .setBarHeight(30)
+    .setItemHeight(20)
+    .addItem("2019-02-04",0)
+    .addItem("2019-02-05",1)
+    .addItem("2019-02-06",2);
+
+  // Create dropdown list for end date (toDate)
+  DropdownList endDateChooser = cp5.addDropdownList("toDate")
     .setPosition(875, 225)
-    .setLabel("End Date")
-    ;
+    .setBarHeight(30)
+    .setItemHeight(20)
+    .addItem("2019-02-10", 0)
+    .addItem("2019-02-11", 1)
+    .addItem("2019-02-12", 2);
+
+  // Set initial date selection
+  startDateChooser.setValue(0);  // Select first item by default
+  endDateChooser.setValue(0);
     
   button = cp5.addButton("reset")
     .setPosition(875,325)
     .onPress(new CallbackListener() {
     public void controlEvent(CallbackEvent event) {
-      noLoop();
-      println(fromDate + " : "+toDate);
+      println(fromDate + ": "+toDate);
       loadData();   //re-loads the tables
       i = 0;
-      loop();
       }
     }
   )
@@ -59,12 +68,7 @@ void setupUI() {
     }
   }
   );
-    
-  dateChooser();  
   customizeDropdown(levels);
-  
-  
-
 }
 
 
@@ -129,6 +133,41 @@ void controlEvent(ControlEvent theEvent) {
         println("event from controller : "+theEvent.getController().getValue()+" from "+theEvent.getController());
         showFloor();
    }
+     if (theEvent.isFrom("fromDate")) {
+    float date = theEvent.getController().getValue();
+    switch (int(date))
+    {
+     case 0:
+     fromDate = "2019-02-04";
+     break;
+     case 1:
+     fromDate = "2019-02-05";
+     break;
+     case 2:
+     fromDate = "2019-02-06";
+     break;
+    }
+    println("Selected fromDate: " + fromDate);
+  }
+
+  // Handle the end date dropdown
+  if (theEvent.isFrom("toDate")) {
+    float date = theEvent.getController().getValue();
+    switch(int(date))
+    {
+     case 0:
+     toDate = "2019-02-10";
+     break;
+     case 1:
+     toDate = "2019-02-11";
+     break;
+     case 2:
+     toDate = "2019-02-12";
+     break;
+    }
+    
+    println("Selected toDate: " + toDate);
+  }
 }
 
 // split time string to get date and time of data
@@ -150,31 +189,4 @@ void findTime() {
 
   //println("date = " + newDate);
   println("time = " + time);
-}
-
-void dateChooser()
-{
-  startDateChooser.setBackgroundColor(color(190));
-  startDateChooser.setItemHeight(20);
-  startDateChooser.setBarHeight(15);
-  startDateChooser.getCaptionLabel().set("start date");
-  startDateChooser.addItem("2019-02-04", "2019-02-04");
-  startDateChooser.addItem("2019-02-03", "2019-02-03");
-  startDateChooser.addItem("2019-02-02", "2019-02-02");
-  startDateChooser.addItem("2019-02-01", "2019-02-01");
-  startDateChooser.setColorBackground(color(60));
-  startDateChooser.setColorActive(color(255, 128));
-
-
-  endDateChooser.getCaptionLabel().set("end date");
-  endDateChooser.setBackgroundColor(color(190));
-  endDateChooser.setItemHeight(20);
-  endDateChooser.setBarHeight(15);
-  endDateChooser.addItem("2019-02-10", "2019-02-10");
-  endDateChooser.addItem("2019-02-9", "2019-02-09");
-  endDateChooser.addItem("2019-02-8", "2019-02-08");
-  endDateChooser.addItem("2019-02-7", "2019-02-07");
-  endDateChooser.setColorBackground(color(60));
-  endDateChooser.setColorActive(color(255, 128));
-  
 }
