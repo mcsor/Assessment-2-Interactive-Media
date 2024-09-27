@@ -1,5 +1,7 @@
 // import libraries
 import controlP5.*;
+import processing.sound.*;
+SoundFile sound1;
 
 // global variables
 PImage img;
@@ -14,6 +16,7 @@ void setup() {
   size(1000, 1000, P2D);
   img = loadImage("tree.png", "png");
   image(img, 0, 0);
+  sound1 = new SoundFile(this, "soundeffect.mp3");
   initZoom();
   setupUI();
 
@@ -22,7 +25,8 @@ void setup() {
   println(table01_11In.getRowCount() == table09_26In.getRowCount());
   println(table09_26In.getRowCount() == table11_33In.getRowCount());
   
-  
+    sound1.play();
+
 }
 
 
@@ -73,4 +77,9 @@ void draw() {
   text("People on floor 11: " + level11Counter, 10, 200);
   
   delay(100);
+  
+  //sound
+  float volume = map(level1Counter+level9Counter+level11Counter, 0, 100, 0, 1);
+  sound1.amp(volume);
+
 }
