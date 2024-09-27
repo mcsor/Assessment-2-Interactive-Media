@@ -12,7 +12,7 @@ void initZoom() {
   
   //minumum scale is calculated to prevent texture wrapping
   minScale = max(xratio, yratio);
-  maxScale = 1.10;
+  maxScale = 1.80;
   
   //start zoomed out
   scale = minScale;
@@ -62,4 +62,45 @@ float mapToScreenX(float imgX) {
 // Function to map the bush's y-coordinate from the original image to the screen based on zoom and pan
 float mapToScreenY(float imgY) {
   return (imgY - ty) * (height / th);
+}
+
+void showFloor() {
+   // check which floor level to show  
+  switch (levelNum) {
+    case 1:
+      tx = 95;
+      ty = 451;
+      newScale = constrain(scale, minScale, maxScale);
+      //tx -= (mouseX / newScale - mouseX / scale);
+      //ty -= (mouseY / newScale - mouseY / scale);
+      scale = maxScale; 
+      
+      break;
+  
+    case 9:
+      tx = 510;
+      ty = 250;
+      newScale = constrain(scale, minScale, maxScale);
+      //tx -= (mouseX / newScale - mouseX / scale);
+      //ty -= (mouseY / newScale - mouseY / scale);
+      scale = maxScale;
+      break;
+  
+    case 11:
+      tx = 245;
+      ty = 10;
+      newScale = constrain(scale, minScale, maxScale);
+      //tx -= (mouseX / newScale - mouseX / scale);
+      //ty -= (mouseY / newScale - mouseY / scale);
+      scale = maxScale;
+      break;
+  
+    case -99:
+      newScale = constrain(scale / 1.8 , minScale, maxScale);
+      tx -= (mouseX / newScale - mouseX / scale);
+      ty -= (mouseY / newScale - mouseY / scale);
+      scale = newScale;
+      break;
+    
+  }
 }
