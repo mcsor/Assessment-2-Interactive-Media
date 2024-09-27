@@ -1,97 +1,59 @@
+// import libraries
+import controlP5.*;
+import processing.sound.*;
+SoundFile sound1;
+
+// global variables
 PImage img;
-<<<<<<< Updated upstream
-=======
 int levelNum = 0;
-String fromDate = "2019-02-04"; //for choosing start dates
-String toDate = "2019-02-10"; //for choosing end dates
 ControlP5 cp5;
-DropdownList dateChooser;
-DropdownList levels;
-boolean testCheck = false;
->>>>>>> Stashed changes
+boolean level1 = false;
+boolean level9 = false;
+boolean level11 = false;
+boolean isPaused = false;
 
 void setup() {
-  frameRate(2);
-   size(700, 700);
+  frameRate(60);
+  size(1000, 1000, P2D);
   img = loadImage("tree.png", "png");
-  img.resize(0, 700);
   image(img, 0, 0);
 
-<<<<<<< Updated upstream
-  //level 9 data (4. of febuary 2019 to 10. of february)
-  table09_26In = loadTable("https://eif-research.feit.uts.edu.au/api/csv/?rFromDate=2019-02-04T00%3A00&rToDate=2019-02-10T23%3A59%3A59&rFamily=people&rSensor=+PC09.26+%28In%29", "csv");
-  table09_26Out = loadTable("https://eif-research.feit.uts.edu.au/api/csv/?rFromDate=2019-02-04T00%3A00&rToDate=2019-02-10T23%3A59%3A59&rFamily=people&rSensor=+PC09.26+%28Out%29", "csv");
-  table09_27In = loadTable("https://eif-research.feit.uts.edu.au/api/csv/?rFromDate=2019-02-04T00%3A00&rToDate=2019-02-10T23%3A59%3A59&rFamily=people&rSensor=+PC09.27+%28In%29", "csv");
-  table09_27Out = loadTable("https://eif-research.feit.uts.edu.au/api/csv/?rFromDate=2019-02-04T00%3A00&rToDate=2019-02-10T23%3A59%3A59&rFamily=people&rSensor=+PC09.27+%28Out%29", "csv");
-  table09_28In = loadTable("https://eif-research.feit.uts.edu.au/api/csv/?rFromDate=2019-02-04T00%3A00&rToDate=2019-02-10T23%3A59%3A59&rFamily=people&rSensor=+PC09.28+%28In%29", "csv");
-  table09_28Out = loadTable("https://eif-research.feit.uts.edu.au/api/csv/?rFromDate=2019-02-04T00%3A00&rToDate=2019-02-10T23%3A59%3A59&rFamily=people&rSensor=+PC09.28+%28Out%29", "csv");
-  table09_29In = loadTable("https://eif-research.feit.uts.edu.au/api/csv/?rFromDate=2019-02-04T00%3A00&rToDate=2019-02-10T23%3A59%3A59&rFamily=people&rSensor=+PC09.29+%28In%29", "csv");
-  table09_29Out = loadTable("https://eif-research.feit.uts.edu.au/api/csv/?rFromDate=2019-02-04T00%3A00&rToDate=2019-02-10T23%3A59%3A59&rFamily=people&rSensor=+PC09.29+%28Out%29", "csv");
+  sound1 = new SoundFile(this, "soundeffect.mp3");
+  initZoom();
+  setupUI();
 
-  //level 9 data (4. of febuary 2019 to 10. of february)
-  table11_31In = loadTable("https://eif-research.feit.uts.edu.au/api/csv/?rFromDate=2019-02-04T00%3A00&rToDate=2019-02-10T23%3A59%3A59&rFamily=people&rSensor=+PC11.31+%28In%29", "csv");
-  table11_31Out = loadTable("https://eif-research.feit.uts.edu.au/api/csv/?rFromDate=2019-02-04T00%3A00&rToDate=2019-02-10T23%3A59%3A59&rFamily=people&rSensor=+PC11.31+%28Out%29", "csv");
-  table11_32In = loadTable("https://eif-research.feit.uts.edu.au/api/csv/?rFromDate=2019-02-04T00%3A00&rToDate=2019-02-10T23%3A59%3A59&rFamily=people&rSensor=+PC11.32+%28In%29", "csv");
-  table11_32Out = loadTable("https://eif-research.feit.uts.edu.au/api/csv/?rFromDate=2019-02-04T00%3A00&rToDate=2019-02-10T23%3A59%3A59&rFamily=people&rSensor=+PC11.32+%28Out%29", "csv");
-  table11_33In = loadTable("https://eif-research.feit.uts.edu.au/api/csv/?rFromDate=2019-02-04T00%3A00&rToDate=2019-02-10T23%3A59%3A59&rFamily=people&rSensor=+PC11.33+%28In%29", "csv");
-  table11_33Out = loadTable("https://eif-research.feit.uts.edu.au/api/csv/?rFromDate=2019-02-04T00%3A00&rToDate=2019-02-10T23%3A59%3A59&rFamily=people&rSensor=+PC11.33+%28Out%29", "csv");
 
-  println(table01_11In.getRowCount() == table09_26In.getRowCount());
-  println(table09_26In.getRowCount() == table11_33In.getRowCount());
-=======
-  loadData();
+  
+  loadData(); //<>//
+  
+  
+    sound1.play();
 
-  println(table01_11In.getRowCount() == table09_26In.getRowCount());
-  println(table09_26In.getRowCount() == table11_33In.getRowCount());
 
-  cp5 = new ControlP5(this);
-
-  // create dropdown list for floor levels
-  levels = cp5.addDropdownList("levels")
-    .setPosition(500, 300)
-    ;
-  dateChooser();
-
-  customizeDropdown(levels);
->>>>>>> Stashed changes
 }
+  println(table01_11In.getRowCount() == table09_26In.getRowCount());
+  println(table09_26In.getRowCount() == table11_33In.getRowCount());
 
 void draw() {
-  background(250);
-  textSize(30);
-  fill(0);
-  image(img, 0, 0);
-<<<<<<< Updated upstream
+
+  cp5.draw();
+  drawZoom();
   
-    if (i < table01_11In.getRowCount()) {
-=======
-  //*drawBush(111, 619, 37, level1Counter);
-  //drawBush(292, 556, 22, int(random(70)));
-  //drawBush(234, 499, 10, int(random(70)));
-  //drawBush(122, 474, 35, int(random(70)));
-  //drawBush(265, 400, 25, int(random(70)));
-  //*drawBush(118, 372, 39, level9Counter);
-  //drawBush(125, 259, 39, int(random(70)));
-  //drawBush(254, 275, 38, int(random(70)));
-  //drawBush(251, 275, 38, int(random(70)));
-  //drawBush(258, 150, 38, int(random(70)));
-  //drawBush(251, 275, 38, int(random(70)));
-  //*drawBush(188, 71, 38, level11Counter);
-  //*delay(200);
+  //background(250);
+  //textSize(30);
 
-  // check which floor level to show
-  if (levelNum == 1) {
-    drawBush(111, 619, 37, level1Counter, "birch");
-  } else if (levelNum == 9) {
-    drawBush(118, 372, 39, level9Counter, "birch");
-  } else if (levelNum == 11) {
-    drawBush(188, 71, 38, level11Counter, "birch");
-  }
-  delay(200);
-
-  //drawLeaf(200, 200, 120, 10,  "beech");
-  if (i < table01_11In.getRowCount()) {
->>>>>>> Stashed changes
+  //image(img, 0, 0);
+ //drawBush(mapToScreenX(1151), mapToScreenY(2160), 235, level1Counter, "beech", scale);
+ // drawBush(mapToScreenX(2505), mapToScreenY(1534), 377, level9Counter, "beech", scale);
+ // drawBush(mapToScreenX(1358), mapToScreenY(667), 261, level11Counter, "beech", scale);
+  prevLevel1Counter = level1Counter;
+  prevLevel9Counter = level9Counter;
+  prevLevel11Counter = level11Counter;
+  
+ 
+  
+  if (!isPaused){
+  if (i < table01_11In.getRowCount()) { //<>//
     level1Counter += peopleOnFloor(table01_11In, table01_11Out) + peopleOnFloor(table01_12In, table01_12Out) + peopleOnFloor(table01_13In, table01_13Out);
     level9Counter += peopleOnFloor(table09_26In, table09_26Out) + peopleOnFloor(table09_28In, table09_28Out); //only using data from stairs down and classroom since the other data seems to add many people during night
     level11Counter += peopleOnFloor(table11_31In, table11_31Out) + peopleOnFloor(table11_32In, table11_32Out) + peopleOnFloor(table11_33In, table11_33Out);
@@ -107,26 +69,54 @@ void draw() {
     }
     time = table01_11In.getString(i, 0);
   }
+  createLeaf(); //<>//
   i++;
-  text("Time: " +  time, 380, 50);
-  text("People on floor 1: " + level1Counter, 350, 100);
-  text("People on floor 9: " + level9Counter, 350, 150);
-  text("People on floor 11: " + level11Counter, 350, 200);
-  
-  
-  drawBush(111, 619, 37, level1Counter);
-  //drawBush(292, 556, 22, int(random(70)));
-  //drawBush(234, 499, 10, int(random(70)));
-  //drawBush(122, 474, 35, int(random(70)));
-  //drawBush(265, 400, 25, int(random(70)));
-  drawBush(118, 372, 39, level9Counter);
-  //drawBush(125, 259, 39, int(random(70)));
-  //drawBush(254, 275, 38, int(random(70)));
-  //drawBush(251, 275, 38, int(random(70)));
-  //drawBush(258, 150, 38, int(random(70)));
-  //drawBush(251, 275, 38, int(random(70)));
-  drawBush(188, 71, 38, level11Counter);
 
-  //drawLeaf(200, 200, 120, 10,  "beech");
+  }
+  drawLeaf();
+  fill(0);
+  textSize(20);
+  //text("mouseX " + mouseX, 10, 10);
+  //text("MouseY " + mouseY, 10, 50);
+  
+  text("Time: " +  time, 10, 50);
+  
+  switch(levelNum){
+    case 1:
+      level1 = true;
+      level9 = false;
+      level11 = false;
+      break;
+    case 9:
+      level9 = true;
+      level1 = false;
+      level11 = false;
+      break;
+    case 11:
+      level11 = true;
+      level9 = false;
+      level1 = false;
+      break;
+    case -99:
+      level1 = false;
+      level9 = false;
+      level11 = false;
+      break;
+    
+  }
+  if(level1 == true){
+    text("People on floor 1: " + level1Counter, 10, 100);
+  }
+  if(level9 == true){
+    text("People on floor 9: " + level9Counter, 120, 100);
+  }
+  if(level11 == true){
+    text("People on floor 11: " + level11Counter, 10, 100);
+  }
+  
   delay(100);
+  
+  //sound
+  float volume = map(level1Counter+level9Counter+level11Counter, 0, 100, 0, 1);
+  sound1.amp(volume);
 }
