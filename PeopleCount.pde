@@ -48,7 +48,7 @@ int peopleOnFloor(Table in, Table out) {
 
 void dumpTables() //Unloads all tables
 {
-  if (table01_11In != null)table01_11In = table01_11In = new Table();;
+  if (table01_11In != null)table01_11In.clearRows();
   if (table01_11Out != null)table01_11Out.clearRows();
   if (table01_12In != null)table01_12In.clearRows();
   if (table01_12Out != null)table01_12Out.clearRows();
@@ -76,6 +76,7 @@ void loadData()
   {
     dumpTables();
   }
+  isPaused = true;
   table01_11In = loadTable("https://eif-research.feit.uts.edu.au/api/csv/?rFromDate="+fromDate+"&rToDate="+toDate+"&rFamily=people&rSensor=+PC01.11+%28In%29", "csv");
   table01_11Out = loadTable("https://eif-research.feit.uts.edu.au/api/csv/?rFromDate="+fromDate+"&rToDate="+toDate+"&rFamily=people&rSensor=+PC01.11+%28Out%29", "csv");
   table01_12In = loadTable("https://eif-research.feit.uts.edu.au/api/csv/?rFromDate="+fromDate+"&rToDate="+toDate+"&rFamily=people&rSensor=+PC01.12+%28In%29", "csv");
@@ -103,4 +104,5 @@ void loadData()
   isLoaded = true;
   println(table01_11In.getRowCount() == table09_26In.getRowCount());
   println(table09_26In.getRowCount() == table11_33In.getRowCount());
+  isPaused = false;
 }

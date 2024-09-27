@@ -14,35 +14,36 @@ void setupUI() {
   
   // create dropdown list for floor levels
   levels = cp5.addDropdownList("levels")
-    .setPosition(800, 50)
+    .setPosition(875, 25)
     .setLabel("Level Selection")
     ;
     
   startDateChooser = cp5.addDropdownList("fromDate")
-    .setPosition(800, 150)
+    .setPosition(875, 125)
     .setLabel("Start Date")
     ;
     
   endDateChooser = cp5.addDropdownList("toDate")
-    .setPosition(800, 250)
+    .setPosition(875, 225)
     .setLabel("End Date")
     ;
     
   button = cp5.addButton("reset")
-    .setPosition(800,350)
-  //.onPress(new CallbackListener() {
-  //  public void controlEvent(CallbackEvent event) {
-  //    noLoop();
-  //    loadData();   //re-loads the tables
-  //    i = 0;
-  //    loop();
-  //  }
-  //}
-  //)
+    .setPosition(875,325)
+    .onPress(new CallbackListener() {
+    public void controlEvent(CallbackEvent event) {
+      noLoop();
+      println(fromDate + " : "+toDate);
+      loadData();   //re-loads the tables
+      i = 0;
+      loop();
+      }
+    }
+  )
   ;
   
     button = cp5.addButton("Pause")
-    .setPosition(100,350)
+    .setPosition(800,50)
     .onPress(new CallbackListener() {
     public void controlEvent(CallbackEvent event) {
       isPaused = true;
@@ -51,7 +52,7 @@ void setupUI() {
   );
   
     button = cp5.addButton("Play")
-    .setPosition(150,350)
+    .setPosition(800,25)
     .onPress(new CallbackListener() {
     public void controlEvent(CallbackEvent event) {
       isPaused = false;
