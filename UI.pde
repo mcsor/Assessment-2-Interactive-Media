@@ -5,6 +5,70 @@ import java.util.Date;
 
 // UI functions
 
+
+void setupUI() {
+  cp5 = new ControlP5(this);
+  
+  // create dropdown list for floor levels
+  levels = cp5.addDropdownList("levels")
+    .setPosition(875, 25)
+    .setLabel("Level Selection")
+    ;
+    
+    //startDateChooser
+  DropdownList startDateChooser = cp5.addDropdownList("fromDate")
+    .setPosition(875, 125)
+    .setBarHeight(30)
+    .setItemHeight(20)
+    .addItem("2019-02-04",0)
+    .addItem("2019-02-05",1)
+    .addItem("2019-02-06",2);
+
+  // Create dropdown list for end date (toDate)
+  DropdownList endDateChooser = cp5.addDropdownList("toDate")
+    .setPosition(875, 225)
+    .setBarHeight(30)
+    .setItemHeight(20)
+    .addItem("2019-02-10", 0)
+    .addItem("2019-02-11", 1)
+    .addItem("2019-02-12", 2);
+
+  // Set initial date selection
+  startDateChooser.setValue(0);  // Select first item by default
+  endDateChooser.setValue(0);
+    
+  button = cp5.addButton("reset")
+    .setPosition(875,325)
+    .onPress(new CallbackListener() {
+    public void controlEvent(CallbackEvent event) {
+      println(fromDate + ": "+toDate);
+      loadData();   //re-loads the tables
+      i = 0;
+      }
+    }
+  )
+  ;
+  
+    button = cp5.addButton("Pause")
+    .setPosition(800,50)
+    .onPress(new CallbackListener() {
+    public void controlEvent(CallbackEvent event) {
+      isPaused = true;
+    }
+  }
+  );
+  
+    button = cp5.addButton("Play")
+    .setPosition(800,25)
+    .onPress(new CallbackListener() {
+    public void controlEvent(CallbackEvent event) {
+      isPaused = false;
+    }
+  }
+  );
+  customizeDropdown(levels);
+}
+
 void customizeDropdown(DropdownList ddl) {
   // a convenience function to customize a DropdownList
   ddl.setBackgroundColor(color(190));
