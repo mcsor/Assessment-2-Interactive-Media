@@ -4,7 +4,7 @@ Group 13 - 32027 31080 Interactive Media
 ## Overview
 This project was created for the 32027 31080 Interactive Media course at UTS.  It is meant to help users easily visualize the flow of people entering and exiting Floor 1, 9 and 11 in UTS's Building 11 through a tree model.  As people enter a floor, leaves grow on the corresponding branch, and as they exit, leaves fall off that branch.
 
-This project is tailored for UTS students and staff, contributing to space management and event planning by offering insights into the flow of people on specific floors. It helps optimize resource allocation and prevent overcrowding, while also predicting attendance patterns for large events to ensure that appropriate staffing and resources are available, ultimately enhancing the overall experience for attendees.
+Designed specifically for UTS students and staff, this project aids in space management and event planning by offering insights into the flow of people on specific floors. It helps optimize resource allocation and prevent overcrowding, while also predicting attendance patterns for large events to ensure that appropriate staffing and resources are available, ultimately enhancing the overall experience for attendees.
 
 **NOTE:** Our current project displays data recorded on Floor 1, 9, and 11 in UTS's Building 11 from February 4-10, 2019.
 
