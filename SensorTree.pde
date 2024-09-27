@@ -74,8 +74,6 @@ void draw() {
   //text("mouseX " + mouseX, 10, 10);
   //text("MouseY " + mouseY, 10, 50);
   
-  text("Time: " +  time, 10, 50);
-  
   switch(levelNum){
     case 1:
       level1 = true;
@@ -99,11 +97,17 @@ void draw() {
       break;
     
   }
+   if(level9 == true){
+    text("Time: " +  time, 765, 50);
+  } else {
+    text("Time: " +  time, 10, 50);
+  }
+  
   if(level1 == true){
     text("People on floor 1: " + level1Counter, 10, 100);
   }
   if(level9 == true){
-    text("People on floor 9: " + level9Counter, 120, 100);
+    text("People on floor 9: " + level9Counter, 810, 100);
   }
   if(level11 == true){
     text("People on floor 11: " + level11Counter, 10, 100);
