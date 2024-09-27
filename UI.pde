@@ -43,7 +43,7 @@ void customizeDropdown(DropdownList ddl) {
   ddl.addItem("Level 9", 1);
   // value 2 = level 11
   ddl.addItem("Level 11", 2);
-  ddl.addItem("FullTree", 3);
+  ddl.addItem("Full Tree", 3);
 
   //ddl.scroll(0);
   ddl.setColorBackground(color(60));

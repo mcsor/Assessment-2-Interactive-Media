@@ -16,6 +16,7 @@ void setup() {
   image(img, 0, 0);
   initZoom();
   setupUI();
+
   
   loadData();
   println(table01_11In.getRowCount() == table09_26In.getRowCount());
@@ -62,11 +63,14 @@ void draw() {
   drawLeaf();
   i++;
   fill(0);
-
-  text("Time: " +  time, 350, 50);
-  text("People on floor 1: " + level1Counter, 350, 100);
-  text("People on floor 9: " + level9Counter, 350, 150);
-  text("People on floor 11: " + level11Counter, 350, 200);
+  textSize(20);
+  //text("mouseX " + mouseX, 10, 10);
+  //text("MouseY " + mouseY, 10, 50);
+  
+  text("Time: " +  time, 10, 50);
+  text("People on floor 1: " + level1Counter, 10, 100);
+  text("People on floor 9: " + level9Counter, 10, 150);
+  text("People on floor 11: " + level11Counter, 10, 200);
   
   delay(100);
 }

@@ -114,8 +114,8 @@ void createLeaf() {
       
       for (int i = prevLevel1Counter; i < level1Counter; i++) {
         // create leaves with parameters (x-pos, y-pos, swayAmount, fallSpeed, size, ID)
-        //leaves.add(new Leaf(random(width/4.9,width/2.717), random(height/2.1,height/1.41), random(10,20), random(4.0,5), random(1.2,1.8), "F1"));
         leaves.add(new Leaf(random(191,360), random(476,726), random(10,20), random(4.0,5), random(1.2,1.8), "F1"));
+        //note: the above values are hard-coded for X and Y to compare the difference in hard-coding vs relative position
       }
   }
     if (level9Counter > prevLevel9Counter) {
