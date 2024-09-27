@@ -60,7 +60,7 @@ void controlEvent(ControlEvent theEvent) {
   if (theEvent.isGroup()) {
     // check if the Event was triggered from a ControlGroup
     println("event from group : "+theEvent.getGroup().getValue()+" from "+theEvent.getGroup());
-  } else if (theEvent.isController()) {
+  } else if (theEvent.isController() && theEvent.getController().getName().equals("levels")) {
     float level = theEvent.getController().getValue();
 
 
