@@ -17,6 +17,14 @@ Users can set a beginning and end date (between Feb 4-10, 2019) using two dropdo
 
 Users can zoom in for a closer look at a specific floor (or branch) by selecting their preferred floor from a dropdown menu.  To view the entire graphic, the option 'All' may be selected from the dropdown menu to zoom back out.
 
+**Play/Pause**
+
+If users would like to take a closer look at the data without distraction, they can use the *Pause* button.  To start up the program again, users can press the *Play* button.
+
+**Reset**
+
+To reset data from the start date, users can use the *Reset* button.
+
 ## Installation
 1. [Install Processing](https://processing.org/download)
 2. Download the project zip file.
